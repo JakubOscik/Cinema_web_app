@@ -67,6 +67,26 @@ public class UsersController
                 status = true;
             }
         }
+        System.out.println(status);
+        return status;
+    }
+
+    @PostMapping("/register")
+    private boolean register(@RequestBody Users data){
+        Iterable<Users> allUsers = usersRepository.findAll();
+        int id = 0;
+        boolean status = true;
+        for(Users user: allUsers) {
+            if(user.getEmail().equals(data.getEmail())){
+                status = false;
+                return status;
+            }
+            id = user.getUserId() + 1;
+        }
+        data.setUserId(id);
+        usersRepository.save(data);
+        System.out.println("SUCCESS");
         return status;
     }
 }
+
