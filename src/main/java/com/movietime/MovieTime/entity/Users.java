@@ -13,7 +13,7 @@ import javax.persistence.*;
 @NoArgsConstructor
 @JsonIdentityInfo(
         generator = ObjectIdGenerators.PropertyGenerator.class,
-        property = "usersId")
+        property = "userId")
 public @Getter @Setter
 class Users {
     @Id
