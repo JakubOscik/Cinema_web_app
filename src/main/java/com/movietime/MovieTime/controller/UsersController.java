@@ -67,7 +67,6 @@ public class UsersController
                 status = true;
             }
         }
-        System.out.println(status);
         return status;
     }
 
@@ -85,7 +84,6 @@ public class UsersController
         }
         data.setUserId(id);
         usersRepository.save(data);
-        System.out.println("SUCCESS");
         return status;
     }
 }
