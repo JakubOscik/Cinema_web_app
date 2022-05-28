@@ -89,3 +89,4 @@ class Place {
         this.column = column;
     }
 }
+

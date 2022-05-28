@@ -2,6 +2,7 @@ package com.movietime.MovieTime.controller;
 
 import com.movietime.MovieTime.entity.Screen;
 import com.movietime.MovieTime.service.ScreenService;
+import org.json.simple.JSONArray;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -37,5 +38,10 @@ public class ScreenController
     {
         screenService.saveOrUpdate(screen);
         return screen.getScreenId();
+    }
+
+    @GetMapping("/screen")
+    private JSONArray screen(@RequestParam String day){
+        return screenService.printScreen(day);
     }
 }
