@@ -28,17 +28,21 @@ class Place {
     @Column(name="taken", nullable = false)
     private boolean taken;
 
-    @Column(name="placeRow", nullable = false)
-    private int row;
+    @Column(name="height", nullable = false)
+    private int height;
 
-    @Column(name="placeColumn", nullable = false)
-    private int column;
+    @Column(name="width", nullable = false)
+    private int width;
 
-    public Place(Hall hallId, boolean taken, int row, int column) {
+    @Column(name="startPoint", nullable = false)
+    private int startPoint;
+
+    public Place(Hall hallId, boolean taken, int height, int width, int startPoint) {
         this.hallId = hallId;
         this.taken = taken;
-        this.row = row;
-        this.column = column;
+        this.height = height;
+        this.width = width;
+        this.startPoint = startPoint;
     }
 
     public int getPlaceId() {
@@ -73,20 +77,27 @@ class Place {
         this.hallId = hallId;
     }
 
-    public int getRow() {
-        return row;
+    public int getHeight() {
+        return height;
     }
 
-    public void setRow(int row) {
-        this.row = row;
+    public void setHeight(int height) {
+        this.height = height;
     }
 
-    public int getColumn() {
-        return column;
+    public int getWidth() {
+        return width;
     }
 
-    public void setColumn(int column) {
-        this.column = column;
+    public void setWidth(int width) {
+        this.width = width;
+    }
+
+    public int getStartPoint() {
+        return startPoint;
+    }
+
+    public void setStartPoint(int startPoint) {
+        this.startPoint = startPoint;
     }
 }
-
