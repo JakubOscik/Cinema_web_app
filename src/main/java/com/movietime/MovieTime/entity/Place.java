@@ -34,15 +34,19 @@ class Place {
     @Column(name="width", nullable = false)
     private int width;
 
-    @Column(name="startPoint", nullable = false)
-    private int startPoint;
+    @Column(name="x", nullable = false)
+    private int x;
 
-    public Place(Hall hallId, boolean taken, int height, int width, int startPoint) {
+    @Column(name="y", nullable = false)
+    private int y;
+
+    public Place(Hall hallId, boolean taken, int height, int width, int x, int y) {
         this.hallId = hallId;
         this.taken = taken;
         this.height = height;
         this.width = width;
-        this.startPoint = startPoint;
+        this.x = x;
+        this.y = y;
     }
 
     public int getPlaceId() {
@@ -93,11 +97,17 @@ class Place {
         this.width = width;
     }
 
-    public int getStartPoint() {
-        return startPoint;
+    public int getX() {
+        return x;
     }
 
-    public void setStartPoint(int startPoint) {
-        this.startPoint = startPoint;
+    public void setX(int x) {
+        this.x = x;
+    }
+
+    public int getY() { return y;}
+
+    public void setY(int y) {
+        this.y = y;
     }
 }
