@@ -36,10 +36,16 @@ class Ticket {
     @JsonBackReference
     private Users usersId;
 
-    public Ticket(Screen screenId, Film filmId, Users usersId) {
+    @OneToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name = "placeId")
+    @JsonBackReference
+    private Place placeId;
+
+    public Ticket(Screen screenId, Film filmId, Users usersId, Place placeId) {
         this.screenId = screenId;
         this.filmId = filmId;
         this.usersId = usersId;
+        this.placeId = placeId;
     }
 
     public int getTicketId() {
@@ -67,4 +73,12 @@ class Ticket {
     }
 
     public void setUsersFk(Users usersFk) {this.usersId = usersFk;}
+
+    public Place getPlaceId() {
+        return placeId;
+    }
+
+    public void setPlaceId(Place placeId) {
+        this.placeId = placeId;
+    }
 }

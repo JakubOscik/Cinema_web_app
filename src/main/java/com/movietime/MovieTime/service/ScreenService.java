@@ -65,6 +65,7 @@ public class ScreenService
         int i = 0;
         for(Object a: filmsData.keySet()) {
             Object name = a;
+            System.out.println(name);
             ArrayList<Object> hours = filmsData.get(a);
             ArrayList<Object> ids = screenIds.get(a);
             JSONObject jsonObject = new JSONObject();
