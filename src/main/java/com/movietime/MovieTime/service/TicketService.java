@@ -1,5 +1,6 @@
 package com.movietime.MovieTime.service;
 
+import com.movietime.MovieTime.entity.Screen;
 import com.movietime.MovieTime.entity.Ticket;
 import com.movietime.MovieTime.repository.TicketRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -29,9 +30,13 @@ public class TicketService
     {
         ticketRepository.save(ticket);
     }
-
     public void delete(int id)
     {
         ticketRepository.deleteById(id);
+    }
+    public void getAllTickets(Screen screen){
+        var places =ticketRepository.findAllTicketsByScreen(screen);
+        System.out.println(screen);
+        System.out.println(places);
     }
 }
