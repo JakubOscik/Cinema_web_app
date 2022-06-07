@@ -2,6 +2,7 @@ package com.movietime.MovieTime.entity;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonIdentityInfo;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -23,6 +24,7 @@ class Place {
 
     @ManyToOne
     @JoinColumn(name = "hallId")
+    @JsonIgnoreProperties({ "places" })
     private Hall hallId;
 
     @Column(name="taken", nullable = false)

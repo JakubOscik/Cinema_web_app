@@ -2,6 +2,7 @@ package com.movietime.MovieTime.entity;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonIdentityInfo;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -41,17 +42,17 @@ class Ticket {
         return ticketId;
     }
 
-    public Screen getScreenFk() {
+    public Screen getScreenId() {
         return screenId;
     }
 
-    public void setScreenFk(Screen screenFk) {
-        this.screenId = screenFk;
+    public void setScreenId(Screen screenId) {
+        this.screenId = screenId;
     }
 
-    public Users getUsersFk() {
+    public Users getUsersId() {
         return usersId;
     }
 
-    public void setUsersFk(Users usersFk) {this.usersId = usersFk;}
+    public void setUsersId(Users usersId) {this.usersId = usersId;}
 }

@@ -39,10 +39,16 @@ public class TicketController {
         ticketService.delete(id);
     }
 
-    @PostMapping("/ticket")
-    private int saveTicket(@RequestBody Reservation reservation) {
-        ticketService.saveOrUpdate(reservation);
-        return reservation.getTicket().getTicketId();
+    //@PostMapping("/ticket")
+    //private int saveTicket(@RequestBody Reservation reservation) {
+    //    ticketService.saveOrUpdate(reservation);
+    //    return reservation.getTicket().getTicketId();
+    //}
+
+    @PostMapping("/t")
+    private int saveT(@RequestBody Ticket ticket) {
+        ticketService.save(ticket);
+        return ticket.getTicketId();
     }
 
     //@GetMapping("/getTickets")

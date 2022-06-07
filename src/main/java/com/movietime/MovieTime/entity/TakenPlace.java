@@ -21,17 +21,15 @@ class TakenPlace {
     @Column(name="takenPlaceId")
     private int takenPlaceId;
 
-    @ManyToOne
-    @JoinColumn(name = "placeId")
-    private Place placeId;
+    @Column(name = "placeId")
+    private int placeId;
 
-    @ManyToOne
-    @JoinColumn(name = "ticketId")
-    private Ticket ticketId;
+    @Column(name = "screenId")
+    private int screenId;
 
-    public TakenPlace(Place placeId, Ticket ticketId) {
+    public TakenPlace(int placeId, int screenId) {
         this.placeId = placeId;
-        this.ticketId = ticketId;
+        this.screenId = screenId;
     }
 
     public int getTakenPlaceId() {
@@ -42,11 +40,11 @@ class TakenPlace {
         this.takenPlaceId = takenPlaceId;
     }
 
-    public Place getPlaceFk() {return placeId;}
+    public int getPlaceFk() {return placeId;}
 
-    public void setPlaceFk(Place placeId) {this.placeId = placeId;}
+    public void setPlaceFk(int placeId) {this.placeId = placeId;}
 
-    public Ticket getTicketFk() {return ticketId;}
+    public int getTicketFk() {return screenId;}
 
-    public void setTicketFk(Ticket ticketId) {this.ticketId = ticketId;}
+    public void setTicketFk(int screenId) {this.screenId = screenId;}
 }

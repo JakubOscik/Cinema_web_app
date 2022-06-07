@@ -38,6 +38,8 @@ class Screen {
     @JsonBackReference
     private Hall hallId;
 
+
+
     public Screen(String hour, String day, Film filmId, Hall hallId) {
         this.screenHour = hour;
         this.screenDay = day;
@@ -69,8 +71,8 @@ class Screen {
         return filmId;
     }
 
-    public void setFilmFk(Film filmFk) {
-        this.filmId = filmFk;
+    public void setFilmFk(Film filmId) {
+        this.filmId = filmId;
     }
 
     public Hall getHallFk() {

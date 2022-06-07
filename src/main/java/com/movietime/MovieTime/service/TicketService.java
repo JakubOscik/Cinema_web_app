@@ -37,15 +37,18 @@ public class TicketService
         return ticketRepository.findById(id).get();
     }
 
-    public void saveOrUpdate(Reservation reservation)
+    //public void saveOrUpdate(Reservation reservation)
+    //{
+    //    TakenPlace takenPlace = new TakenPlace();
+    //    takenPlace.setPlaceId(reservation.getTakenPlaces());
+    //    takenPlace.setTicketId(reservation.getTicket());
+    //    takenPlaceRepository.save(takenPlace);
+    //    ticketRepository.save(reservation.getTicket());
+    //}
+    public void save(Ticket ticket)
     {
-        TakenPlace takenPlace = new TakenPlace();
-        takenPlace.setPlaceId(reservation.getTakenPlaces());
-        takenPlace.setTicketId(reservation.getTicket());
-        takenPlaceRepository.save(takenPlace);
-        ticketRepository.save(reservation.getTicket());
+        ticketRepository.save(ticket);
     }
-
     public Reservation getAllReservations()
     {
         List<Ticket> tickets = new ArrayList<>();
