@@ -18,26 +18,26 @@ public @Getter @Setter
 class Ticket {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name="ticketId")
+    @Column(name="ticketId" , nullable = false)
     private int    ticketId;
 
     @ManyToOne(fetch = FetchType.EAGER)
-    @JoinColumn(name = "screenId")
+    @JoinColumn(name = "screenId", nullable = false)
     @JsonBackReference
     private Screen    screenId;
 
     @ManyToOne(fetch = FetchType.EAGER)
-    @JoinColumn(name = "filmId")
+    @JoinColumn(name = "filmId", nullable = false)
     @JsonBackReference
     private Film    filmId;
 
     @ManyToOne(fetch = FetchType.EAGER)
-    @JoinColumn(name = "usersId")
+    @JoinColumn(name = "usersId", nullable = false)
     @JsonBackReference
     private Users usersId;
 
     @OneToOne(fetch = FetchType.EAGER)
-    @JoinColumn(name = "placeId")
+    @JoinColumn(name = "placeId", nullable = false)
     @JsonBackReference
     private Place placeId;
 
