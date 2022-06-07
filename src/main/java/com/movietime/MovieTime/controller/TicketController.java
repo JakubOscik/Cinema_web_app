@@ -36,6 +36,11 @@ public class TicketController {
         return ticket.getTicketId();
     }
 
+    @GetMapping("/taken")
+    private List<Integer> getTakenPlaces() {
+        return ticketService.getPlacesFromTickets();
+    }
+
     @GetMapping("/getTickets")
     private void screen(@RequestParam Screen screen) {
         ticketService.getAllTickets(screen);
