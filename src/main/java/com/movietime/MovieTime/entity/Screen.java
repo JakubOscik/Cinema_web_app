@@ -19,23 +19,23 @@ class Screen {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name="`screenId`")
-    private int       screenId;
+    private int screenId;
 
     @Column(name="screenHour", nullable = false)
-    private String    screenHour;
+    private String screenHour;
 
     @Column(name="screenDay", nullable = false)
-    private String    screenDay;
+    private String screenDay;
 
-    @OneToOne(fetch = FetchType.EAGER)
+    @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "filmId")
     @JsonBackReference
-    private Film       filmId;
+    private Film filmId;
 
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "hallId")
     @JsonBackReference
-    private Hall       hallId;
+    private Hall hallId;
 
     public Screen(String hour, String day, Film filmId, Hall hallId) {
         this.screenHour = hour;
