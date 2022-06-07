@@ -32,9 +32,6 @@ class Ticket {
     @JsonBackReference
     private Users usersId;
 
-    @OneToMany(mappedBy = "takenPlaceId")
-    private List<TakenPlace> allTakenPlaces;
-
     public Ticket(Screen screenId, Users usersId) {
         this.screenId = screenId;
         this.usersId = usersId;

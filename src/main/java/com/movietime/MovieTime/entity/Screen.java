@@ -38,9 +38,6 @@ class Screen {
     @JsonBackReference
     private Hall hallId;
 
-    @OneToMany(mappedBy = "ticketId")
-    private List<Ticket> allTickets;
-
     public Screen(String hour, String day, Film filmId, Hall hallId) {
         this.screenHour = hour;
         this.screenDay = day;

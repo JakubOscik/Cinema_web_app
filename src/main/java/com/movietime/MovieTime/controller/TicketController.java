@@ -1,12 +1,15 @@
 package com.movietime.MovieTime.controller;
 
+import com.movietime.MovieTime.entity.Place;
 import com.movietime.MovieTime.entity.Screen;
 import com.movietime.MovieTime.entity.Ticket;
+import com.movietime.MovieTime.model.Reservation;
 import com.movietime.MovieTime.service.TicketService;
 import org.json.simple.JSONArray;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
@@ -21,6 +24,11 @@ public class TicketController {
         return ticketService.getAllTickets();
     }
 
+    @GetMapping("/reservations")
+    private Reservation getAllReservations() {
+        return ticketService.getAllReservations();
+    }
+
     @GetMapping("/ticket/{id}")
     private Ticket getTicket(@PathVariable("id") int id) {
         return ticketService.getTicketById(id);
@@ -32,9 +40,9 @@ public class TicketController {
     }
 
     @PostMapping("/ticket")
-    private int saveTicket(@RequestBody Ticket ticket) {
-        ticketService.saveOrUpdate(ticket);
-        return ticket.getTicketId();
+    private int saveTicket(@RequestBody Reservation reservation) {
+        ticketService.saveOrUpdate(reservation);
+        return reservation.getTicket().getTicketId();
     }
 
     //@GetMapping("/getTickets")
