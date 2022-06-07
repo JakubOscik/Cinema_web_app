@@ -8,6 +8,7 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import javax.persistence.*;
+import java.util.List;
 
 @Entity
 @NoArgsConstructor
@@ -36,6 +37,9 @@ class Screen {
     @JoinColumn(name = "hallId")
     @JsonBackReference
     private Hall hallId;
+
+    @OneToMany(mappedBy = "ticketId")
+    private List<Ticket> allTickets;
 
     public Screen(String hour, String day, Film filmId, Hall hallId) {
         this.screenHour = hour;

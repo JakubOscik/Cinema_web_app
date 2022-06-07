@@ -37,8 +37,8 @@ public class TicketController {
         return ticket.getTicketId();
     }
 
-    @GetMapping("/getTickets")
-    private List<Integer> screen(@RequestParam Screen screen) {
-        return ticketService.getAllTickets(screen);
-    }
+    //@GetMapping("/getTickets")
+    //private List<Integer> screen(@RequestParam Screen screen) {
+    //    return ticketService.getAllTickets(screen);
+    //}
 }

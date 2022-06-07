@@ -8,6 +8,7 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import javax.persistence.*;
+import java.util.List;
 
 @Entity
 @NoArgsConstructor
@@ -24,22 +25,19 @@ class Ticket {
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "screenId", nullable = false)
     @JsonBackReference
-    private Screen    screenId;
+    private Screen screenId;
 
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "usersId", nullable = false)
     @JsonBackReference
     private Users usersId;
 
-    @OneToOne(fetch = FetchType.EAGER)
-    @JoinColumn(name = "placeId", nullable = false)
-    @JsonBackReference
-    private Place placeId;
+    @OneToMany(mappedBy = "takenPlaceId")
+    private List<TakenPlace> allTakenPlaces;
 
-    public Ticket(Screen screenId, Users usersId, Place placeId) {
+    public Ticket(Screen screenId, Users usersId) {
         this.screenId = screenId;
         this.usersId = usersId;
-        this.placeId = placeId;
     }
 
     public int getTicketId() {
@@ -59,13 +57,4 @@ class Ticket {
     }
 
     public void setUsersFk(Users usersFk) {this.usersId = usersFk;}
-
-    public Place getPlaceId() {
-        return placeId;
-    }
-
-    public void setPlaceId(Place placeId) {
-        this.placeId = placeId;
-    }
-
 }

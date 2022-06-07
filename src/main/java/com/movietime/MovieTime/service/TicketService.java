@@ -37,14 +37,15 @@ public class TicketService
         ticketRepository.deleteById(id);
     }
 
-    public List<Integer> getAllTickets(Screen screen){
-        var places = ticketRepository.findAllTicketsByScreen(screen);
-        List<Integer> takenPlaces = new ArrayList<>();
-        for (Map<String, Object> stringObjectMap : places) {
-            List<Object> single = stringObjectMap.values().stream().toList();
-            Place s = (Place) single.get(0);
-            if(s.isTaken()) takenPlaces.add(s.getPlaceId());
-        }
-        return takenPlaces;
-    }
+    //public List<Integer> getAllTickets(Screen screen)
+    //{
+    //    var places = ticketRepository.findAllTicketsByScreen(screen);
+    //    List<Integer> takenPlaces = new ArrayList<>();
+    //    for (Map<String, Object> stringObjectMap : places) {
+    //        List<Object> single = stringObjectMap.values().stream().toList();
+    //        Place s = (Place) single.get(0);
+    //        if(s.isTaken()) takenPlaces.add(s.getPlaceId());
+    //    }
+    //    return takenPlaces;
+    //}
 }
