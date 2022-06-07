@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Map;
 
 @CrossOrigin
 @RestController
@@ -36,13 +37,8 @@ public class TicketController {
         return ticket.getTicketId();
     }
 
-    @GetMapping("/taken")
-    private List<Integer> getTakenPlaces() {
-        return ticketService.getPlacesFromTickets();
-    }
-
     @GetMapping("/getTickets")
-    private void screen(@RequestParam Screen screen) {
-        ticketService.getAllTickets(screen);
+    private List<Integer> screen(@RequestParam Screen screen) {
+        return ticketService.getAllTickets(screen);
     }
 }

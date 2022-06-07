@@ -1,5 +1,6 @@
 package com.movietime.MovieTime.service;
 
+import com.movietime.MovieTime.entity.Place;
 import com.movietime.MovieTime.entity.Screen;
 import com.movietime.MovieTime.entity.Ticket;
 import com.movietime.MovieTime.repository.TicketRepository;
@@ -8,6 +9,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 @Service
 public class TicketService
@@ -17,18 +19,9 @@ public class TicketService
 
     public List<Ticket> getAllTickets()
     {
-        List<Ticket> tickets = new ArrayList<Ticket>();
+        List<Ticket> tickets = new ArrayList<>();
         ticketRepository.findAll().forEach(tickets::add);
         return tickets;
-    }
-
-    public List<Integer> getPlacesFromTickets(){
-        List<Integer> takenPlaces = new ArrayList<Integer>();
-        var s = ticketRepository.findAll();
-        for(Ticket t: s){
-            takenPlaces.add(t.getPlaceId().getPlaceId());
-        }
-        return takenPlaces;
     }
 
     public Ticket getTicketById(int id)
@@ -43,9 +36,15 @@ public class TicketService
     {
         ticketRepository.deleteById(id);
     }
-    public void getAllTickets(Screen screen){
-        var places =ticketRepository.findAllTicketsByScreen(screen);
-        System.out.println(screen);
-        System.out.println(places);
+
+    public List<Integer> getAllTickets(Screen screen){
+        var places = ticketRepository.findAllTicketsByScreen(screen);
+        List<Integer> takenPlaces = new ArrayList<>();
+        for (Map<String, Object> stringObjectMap : places) {
+            List<Object> single = stringObjectMap.values().stream().toList();
+            Place s = (Place) single.get(0);
+            if(s.isTaken()) takenPlaces.add(s.getPlaceId());
+        }
+        return takenPlaces;
     }
 }

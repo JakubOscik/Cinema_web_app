@@ -81,4 +81,5 @@ class Ticket {
     public void setPlaceId(Place placeId) {
         this.placeId = placeId;
     }
+
 }
