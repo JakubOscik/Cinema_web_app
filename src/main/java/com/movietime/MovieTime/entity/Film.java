@@ -18,25 +18,29 @@ class Film {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name="filmId")
-    private int       filmId;
+    private int filmId;
 
     @Column(name="name", nullable = false)
-    private String    name;
+    private String name;
 
     @Column(name="summary", nullable = false)
-    private String    summary;
+    private String summary;
 
     @Column(name="category", nullable = false)
-    private String    category;
+    private String category;
 
     @Column(name="poster", nullable = false)
-    private String    poster;
+    private String poster;
 
-    public Film(String name, String summary, String category, String poster) {
+    @Column(name="trailer")
+    private String trailer;
+
+    public Film(String name, String summary, String category, String poster, String trailer) {
         this.name = name;
         this.summary = summary;
         this.category = category;
         this.poster = poster;
+        this.trailer = trailer;
     }
 
     public int getFilmId() {
