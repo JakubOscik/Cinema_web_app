@@ -22,6 +22,16 @@ public class TakenPlaceService {
         return takenPlaces;
     }
 
+    public List<TakenPlace> getTakenPlacesForScreen(int id){
+        List<TakenPlace> takenPlaces = new ArrayList<>();
+        List<TakenPlace> all = getAllPlaces();
+
+        all.stream()
+                .filter(p -> p.getScreenId() == id)
+                .forEach(takenPlaces::add);
+
+        return takenPlaces;
+    }
     public TakenPlace getTakenPlaceById(int id)
     {
         return takenPlaceRepository.findById(id).get();

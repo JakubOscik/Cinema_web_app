@@ -42,6 +42,9 @@ class Place {
     @Column(name="y", nullable = false)
     private int y;
 
+    @Column(name="color")
+    private String color;
+
     public Place(Hall hallId, boolean taken, int height, int width, int x, int y) {
         this.hallId = hallId;
         this.taken = taken;

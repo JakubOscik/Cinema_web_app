@@ -30,7 +30,10 @@ public class TakenPlaceController {
     private TakenPlace getTakenPlace(@PathVariable("id") int id) {
         return takenPlaceService.getTakenPlaceById(id);
     }
-
+    @GetMapping("/takenplacescreen/{id}")
+    private List<TakenPlace> getTakenPlaceScreen(@PathVariable("id") int id) {
+        return takenPlaceService.getTakenPlacesForScreen(id);
+    }
     @DeleteMapping("/takenplace/{id}")
     private void deleteTakenPlace(@PathVariable("id") int id) {
         takenPlaceService.delete(id);
