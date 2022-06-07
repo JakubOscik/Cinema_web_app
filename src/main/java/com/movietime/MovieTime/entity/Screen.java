@@ -32,7 +32,7 @@ class Screen {
     @JsonBackReference
     private Film       filmId;
 
-    @OneToOne(fetch = FetchType.EAGER)
+    @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "hallId")
     @JsonBackReference
     private Hall       hallId;
