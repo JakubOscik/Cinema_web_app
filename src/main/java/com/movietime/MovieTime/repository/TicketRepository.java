@@ -11,6 +11,4 @@ import java.util.Map;
 
 public interface TicketRepository extends CrudRepository<Ticket, Integer>
 {
-    //@Query("SELECT t.takenPlaceId FROM Ticket t WHERE t.screenId=:screen")
-    //List<Map<String, Object>> findAllTicketsByScreen(@Param("screen") Screen screen);
 }

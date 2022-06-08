@@ -4,7 +4,6 @@ import com.movietime.MovieTime.entity.Place;
 import com.movietime.MovieTime.entity.Screen;
 import com.movietime.MovieTime.entity.TakenPlace;
 import com.movietime.MovieTime.entity.Ticket;
-import com.movietime.MovieTime.model.Reservation;
 import com.movietime.MovieTime.service.TakenPlaceService;
 import com.movietime.MovieTime.service.TicketService;
 import org.json.simple.JSONArray;

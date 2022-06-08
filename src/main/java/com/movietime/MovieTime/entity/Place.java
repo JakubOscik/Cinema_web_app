@@ -24,7 +24,6 @@ class Place {
 
     @ManyToOne
     @JoinColumn(name = "hallId")
-    @JsonIgnoreProperties({ "places" })
     private Hall hallId;
 
     @Column(name="taken", nullable = false)

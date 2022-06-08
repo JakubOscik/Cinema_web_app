@@ -1,7 +1,11 @@
 package com.movietime.MovieTime.service;
 
+import com.movietime.MovieTime.entity.Place;
 import com.movietime.MovieTime.entity.Screen;
+import com.movietime.MovieTime.entity.TakenPlace;
+import com.movietime.MovieTime.repository.PlaceRepository;
 import com.movietime.MovieTime.repository.ScreenRepository;
+import com.movietime.MovieTime.repository.TakenPlaceRepository;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.json.simple.JSONValue;

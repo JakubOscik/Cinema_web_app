@@ -37,4 +37,9 @@ public class PlaceController {
         placeService.saveOrUpdate(place);
         return place.getPlaceId();
     }
+
+    @GetMapping("/coloredSeatsForScreen/{id}")
+    private @ResponseBody List<Place> placesForScreen(@PathVariable("id") int id){
+        return placeService.getSeatsForScreen(id);
+    }
 }
