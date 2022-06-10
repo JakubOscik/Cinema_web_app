@@ -26,16 +26,33 @@ class Ticket {
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "screenId", nullable = false)
     @JsonBackReference
-    private Screen screenId;
+    private Screen    screenId;
+
+    @ManyToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name = "filmId", nullable = false)
+    @JsonBackReference
+    private Film    filmId;
 
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "usersId", nullable = false)
     @JsonBackReference
     private Users usersId;
 
+    @OneToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name = "placeId", nullable = false)
+    @JsonBackReference
+    private Place placeId;
+
     public Ticket(Screen screenId, Users usersId) {
         this.screenId = screenId;
         this.usersId = usersId;
+    }
+
+    public Ticket(Screen screenId, Film filmId, Users usersId, Place placeId) {
+        this.screenId = screenId;
+        this.filmId = filmId;
+        this.usersId = usersId;
+        this.placeId = placeId;
     }
 
     public int getTicketId() {

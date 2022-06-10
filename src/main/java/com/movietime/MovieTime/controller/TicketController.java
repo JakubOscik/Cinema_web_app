@@ -2,6 +2,7 @@ package com.movietime.MovieTime.controller;
 
 import com.movietime.MovieTime.entity.Place;
 import com.movietime.MovieTime.entity.Screen;
+import com.movietime.MovieTime.entity.Temp;
 import com.movietime.MovieTime.entity.Ticket;
 import com.movietime.MovieTime.service.TicketService;
 import org.json.simple.JSONArray;
@@ -39,4 +40,14 @@ public class TicketController {
         return ticket.getTicketId();
     }
 
+    @PostMapping("/post")
+    private int postTicekt(@RequestBody Temp ticket){
+        ticketService.add(ticket);
+        return 1;
+    }
+
+    @GetMapping("/myTickets/{userId}")
+    private JSONArray getUserTickets(@PathVariable("userId") String userId){
+        return ticketService.getUserTickets(userId);
+    }
 }
