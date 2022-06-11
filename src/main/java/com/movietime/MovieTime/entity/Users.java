@@ -27,7 +27,7 @@ class Users {
     @Column(name="password", nullable = false)
     private String    password;
 
-    @Column(name="phone", nullable = false)
+    @Column(name="phone")
     private String    phone;
 
     public Users(String email, String password, String phone) {

@@ -61,20 +61,20 @@ public class UsersController
     }
 
     @PostMapping("/register")
-    private boolean register(@RequestBody Users data){
+    private int register(@RequestBody Users data){
         Iterable<Users> allUsers = usersRepository.findAll();
         int id = 0;
         boolean status = true;
         for(Users user: allUsers) {
             if(user.getEmail().equals(data.getEmail())){
                 status = false;
-                return status;
+                return 0;
             }
             id = user.getUserId() + 1;
         }
         data.setUserId(id);
         usersRepository.save(data);
-        return status;
+        return id;
     }
 }
 
