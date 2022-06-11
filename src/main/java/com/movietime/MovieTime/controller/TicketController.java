@@ -34,20 +34,14 @@ public class TicketController {
         ticketService.delete(id);
     }
 
-    @PostMapping("/t")
-    private int saveT(@RequestBody Ticket ticket) {
-        ticketService.save(ticket);
-        return ticket.getTicketId();
-    }
-
-    @PostMapping("/post")
-    private int postTicekt(@RequestBody Temp ticket){
+    @PostMapping("/ticket")
+    private int postTicket(@RequestBody Temp ticket){
         ticketService.add(ticket);
         return 1;
     }
 
     @GetMapping("/myTickets/{userId}")
-    private JSONArray getUserTickets(@PathVariable("userId") String userId){
+    private JSONArray getUserTickets(@PathVariable("userId") int userId){
         return ticketService.getUserTickets(userId);
     }
 }

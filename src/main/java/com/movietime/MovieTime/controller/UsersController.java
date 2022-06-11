@@ -45,29 +45,19 @@ public class UsersController
         return users.getUserId();
     }
 
-//    @PostMapping("/login")
-//    private boolean login(@RequestParam String username, @RequestParam String password){
-//        Iterable<Users> allUsers = usersRepository.findAll();
-//        boolean status = false;
-//        for(Users user: allUsers) {
-//            if(user.getEmail().equals(username) && user.getPassword().equals(password)){
-//                status = true;
-//            }
-//        }
-//        System.out.println(status + "AAAAAAAAAAAAAAAAAAAAAAAAAA");
-//        return status;
-//    }
-
     @PostMapping("/login")
-    private boolean login(@RequestBody Users data){
+    private int login(@RequestBody Users data){
         Iterable<Users> allUsers = usersRepository.findAll();
         boolean status = false;
+        int id = 0;
         for(Users user: allUsers) {
             if(user.getEmail().equals(data.getEmail()) && user.getPassword().equals(data.getPassword())){
                 status = true;
+                id=user.getUserId();
             }
         }
-        return status;
+        System.out.println(id);
+        return id;
     }
 
     @PostMapping("/register")

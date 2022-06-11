@@ -18,8 +18,6 @@ public class TicketService
     @Autowired
     TicketRepository ticketRepository;
     @Autowired
-    TakenPlaceRepository takenPlaceRepository;
-    @Autowired
     PlaceRepository placeRepository;
     @Autowired
     FilmRepository filmRepository;
@@ -56,25 +54,31 @@ public class TicketService
         Screen screens = screenRepository.findById(temp.getScreenId()).stream().toList().get(0);
         Users users = usersRepository.findById(temp.getUserId()).stream().toList().get(0);
         Place places = placeRepository.findById(temp.getPlaceId()).stream().toList().get(0);
-//        System.out.println(users);
         Ticket t = new Ticket(screens, films, users, places);
         System.out.println(t);
         ticketRepository.save(t);
     }
 
-    public JSONArray getUserTickets(String userId){
-        var user = usersRepository.findById(Integer.parseInt(userId)).stream().toList();
+    public JSONArray getUserTickets(int userId){
+        var user = usersRepository.findById(userId).stream().toList();
+
         Map<String, ArrayList<Integer>> data = new HashMap<>();
         Map<String, Integer> screen = new HashMap<>();
         var s = ticketRepository.findUserTickets(user.get(0));
-        for (Map<String, Object> stringObjectMap : s) {
+        Screen s1 = new Screen();
+
+        for (Map<String, Object> stringObjectMap : s)
+        {
             ArrayList<Integer> places = new ArrayList<>();
             List<Object> single = stringObjectMap.values().stream().toList();
-            Screen name = (Screen) single.get(0);
+
+            s1 = (Screen) single.get(0);
             Place place = (Place) single.get(1);
+
             int p = place.getPlaceId();
-            String n = name.getFilmFk().getName();
-            int screenId = name.getScreenId();
+            String n = s1.getFilmFk().getName();
+            int screenId = s1.getScreenId();
+
             places.add(p);
             if(!data.containsKey(n)){
                 data.put(n, places);
@@ -88,12 +92,13 @@ public class TicketService
         JSONArray array = new JSONArray();
         for(Object a: data.keySet()) {
             Object name = a;
-            ArrayList<Integer> places = data.get(a);
             int id = screen.get(a);
+            Screen s2 = screenRepository.findById(id).get();
+            ArrayList<Integer> places = data.get(a);
             JSONObject jsonObject = new JSONObject();
             jsonObject.put("name", name);
             jsonObject.put("places", places);
-            jsonObject.put("screen", id);
+            jsonObject.put("screen", s2);
             array.add(jsonObject);
         }
         return array;
