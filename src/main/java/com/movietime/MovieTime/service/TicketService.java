@@ -55,7 +55,6 @@ public class TicketService
         Users users = usersRepository.findById(temp.getUserId()).stream().toList().get(0);
         Place places = placeRepository.findById(temp.getPlaceId()).stream().toList().get(0);
         Ticket t = new Ticket(screens, films, users, places);
-        System.out.println(t);
         ticketRepository.save(t);
     }
 

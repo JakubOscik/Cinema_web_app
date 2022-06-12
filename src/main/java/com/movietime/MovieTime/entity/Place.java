@@ -115,11 +115,4 @@ class Place {
         this.y = y;
     }
 
-    @Override
-    public String toString() {
-        return "Place{" +
-                "placeId=" + placeId +
-                ", taken=" + taken +
-                '}';
-    }
 }

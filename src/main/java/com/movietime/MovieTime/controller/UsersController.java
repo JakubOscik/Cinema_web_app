@@ -48,15 +48,12 @@ public class UsersController
     @PostMapping("/login")
     private int login(@RequestBody Users data){
         Iterable<Users> allUsers = usersRepository.findAll();
-        boolean status = false;
         int id = 0;
         for(Users user: allUsers) {
             if(user.getEmail().equals(data.getEmail()) && user.getPassword().equals(data.getPassword())){
-                status = true;
                 id=user.getUserId();
             }
         }
-        System.out.println(id);
         return id;
     }
 
@@ -64,10 +61,8 @@ public class UsersController
     private int register(@RequestBody Users data){
         Iterable<Users> allUsers = usersRepository.findAll();
         int id = 0;
-        boolean status = true;
         for(Users user: allUsers) {
             if(user.getEmail().equals(data.getEmail())){
-                status = false;
                 return 0;
             }
             id = user.getUserId() + 1;
