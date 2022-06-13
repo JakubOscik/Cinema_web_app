@@ -39,11 +39,6 @@ public class TicketService
         return ticketRepository.findById(id).get();
     }
 
-    public void save(Ticket ticket)
-    {
-        ticketRepository.save(ticket);
-    }
-
     public void delete(int id)
     {
         ticketRepository.deleteById(id);
